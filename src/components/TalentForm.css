@@ -1,0 +1,161 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* Background image */
+.form-container {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+
+    background: url("../assets/PUP.jpg") no-repeat center center/cover;
+}
+
+/* Dark overlay */
+.form-container::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 0;
+}
+
+/* Card */
+.form-card {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+    max-width: 500px;
+    padding: 30px 35px;
+
+    background: rgba(255, 255, 255, 0.92);
+
+
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+
+    text-align: left;
+    /* ✅ ensures all inner text aligns left */
+}
+
+/* Top accent bar */
+.form-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 6px;
+    width: 100%;
+    background: #673ab7;
+    border-radius: 12px 12px 0 0;
+}
+
+/* Title */
+.form-card h2 {
+    font-size: 22px;
+    margin-bottom: 8px;
+    color: #202124;
+}
+
+/* Subtitle */
+.form-card p {
+    font-size: 14px;
+    color: #5f6368;
+    margin-bottom: 20px;
+}
+
+/* Field wrapper */
+.form-field {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* ✅ FORCE LEFT ALIGN */
+    width: 100%;
+    margin-bottom: 18px;
+}
+
+/* Labels */
+.form-field label {
+    width: 100%;
+    text-align: left;
+    /* ✅ FORCE LEFT TEXT */
+    display: block;
+
+    font-size: 14px;
+    font-weight: 500;
+    color: #202124;
+    margin-bottom: 6px;
+}
+
+/* Inputs + Select */
+.form-field input,
+.form-field select {
+    width: 100%;
+    display: block;
+
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #dadce0;
+
+    font-size: 14px;
+    color: #202124;
+    background: #fff;
+
+    outline: none;
+    transition: 0.2s ease;
+}
+
+/* Focus effect */
+.form-field input:focus,
+.form-field select:focus {
+    border-color: #1a73e8;
+    box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+}
+
+/* Placeholder */
+input::placeholder {
+    color: #9aa0a6;
+}
+
+/* Button */
+.submit-button {
+    width: 100%;
+    padding: 12px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #1a73e8;
+    color: #fff;
+
+    font-size: 15px;
+    font-weight: 500;
+
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+/* Hover */
+.submit-button:hover {
+    background: #1557b0;
+}
+
+/* Click */
+.submit-button:active {
+    transform: scale(0.98);
+}
+
+/* Mobile */
+@media (max-width: 500px) {
+    .form-card {
+        padding: 22px;
+    }
+}
