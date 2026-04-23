@@ -17,7 +17,7 @@ const TalentForm = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         if (!formData.talent) {
@@ -25,14 +25,46 @@ const TalentForm = () => {
             return;
         }
 
-        console.log("Form Data Submitted:", formData);
+        try {
+            const response = await fetch("https://pepitoapi.azurewebsites.net/submit", {
+                method: "POST",
+                headers:{
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData),
+            });
 
-        setFormData({
-            name: "",
-            age: "",
-            email: "",
-            talent: "",
-        });
+            if(response.ok){
+                const result = await response.json();
+                alert("Form is submitted successfully");
+
+                console.log("API Response:", result);
+                console.log("Form submission was successful!");
+
+                //reset the form
+                setFormData({
+                    name:"",
+                    age:"",
+                    email:"",
+                    talent:"select your talent"
+                });
+            } else {
+                alert("failed to submit form. Please try again");
+                console.error("API ERROR", response.statusText);
+            }
+        } catch (error){
+            alert("An error occurred while submitting the form");
+            console.error("error", error);
+        }
+
+        // console.log("Form Data Submitted:", formData);
+
+        // setFormData({
+        //     name: "",
+        //     age: "",
+        //     email: "",
+        //     talent: "",
+        // });
     };
 
     return (
